@@ -1,9 +1,11 @@
-function createPersonEl(title,firstname,lastname,email) {
+function createPersonEl(title, firstname, lastname, email) {
   let nameEl = $("<li>")[0]
   nameEl.append(`${title} ${firstname} ${lastname} ${email}`)
   return nameEl
 }
-//TODO call jQuery get function with the randomuse.me api and request 3 results
+$.get("https://randomuser.me/api/", {
+    results: 3
+  })
 
   .done(function (response) {
     let personList = $(".person-api-list")[0]
@@ -11,4 +13,3 @@ function createPersonEl(title,firstname,lastname,email) {
       personList.append(createPersonEl(person.name.title, person.name.first, person.name.last, person.email))
     }
   })
-  
